@@ -23,6 +23,7 @@ public class Practice {
         System.out.println("После сортировки по опыту");
         System.out.println(employees);
 
+
         for (int i = 0; i < 3; i++){
             System.out.println(employees.get(i));
         }
