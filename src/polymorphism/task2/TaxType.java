@@ -1,8 +1,10 @@
 package polymorphism.task2;
 
+import java.math.BigDecimal;
+
 public class TaxType {
-    public double calculateTaxFor(double amount) {
+    public BigDecimal calculateTaxFor(BigDecimal amount) {
         // TODO override me!
-        return 0.0;
+        return BigDecimal.ZERO;
     }
 }

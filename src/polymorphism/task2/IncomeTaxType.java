@@ -1,8 +1,10 @@
 package polymorphism.task2;
 
+import java.math.BigDecimal;
+
 public class IncomeTaxType extends TaxType{
     @Override
-    public double calculateTaxFor(double amount) {
-        return amount * 0.13;
+    public BigDecimal calculateTaxFor(BigDecimal amount) {
+        return amount.multiply(new BigDecimal("0.13"));
     }
 }
