@@ -1,5 +1,7 @@
 package inheritance.task2;
 
 public enum VehicleTypeEnum {
-    TRUCK,CAR,PASSENGER,SEDAN,WAGON,PICKUP,BUS,PETROL,DIESEL,HYBRID,ELECTRIC
+    TRUCK,CAR,PASSENGER, // VehicleTypeByPurposeTypes
+    SEDAN,WAGON,PICKUP,BUS, // VehicleTypeByBodyTypes
+    PETROL,DIESEL,HYBRID,ELECTRIC // VehicleTypeByFuelTypes
 }
