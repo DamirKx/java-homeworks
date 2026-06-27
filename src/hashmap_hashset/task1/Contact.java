@@ -20,7 +20,7 @@ public class Contact {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, numOfPhone);
+        return numOfPhone.hashCode();
     }
 
     @Override
