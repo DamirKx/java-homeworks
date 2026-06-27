@@ -40,5 +40,18 @@ public class Practice {
                 System.out.println(product);
             }
         }
+
+        for (String key : warehouse.products.keySet()){
+            warehouse.products.get(key).sort(Product::compareTo);
+        }
+
+        System.out.println("Все товары");
+
+        for (String category : warehouse.products.keySet()){
+            System.out.println(category);
+            for (Product product : warehouse.products.get(category)){
+                System.out.println(product);
+            }
+        }
     }
 }
