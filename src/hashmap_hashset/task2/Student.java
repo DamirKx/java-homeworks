@@ -12,12 +12,15 @@ public class Student {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return  studentId.equals(student.studentId);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return studentId.hashCode();
     }
 }

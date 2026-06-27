@@ -23,7 +23,7 @@ public class Practice {
                 studentHashSet.add(student);
             } else if (command.equals("2")){
                 for (Student student : studentHashSet){
-                    System.out.println(student.name + " " + student.group + " " + student.studentId);
+                    System.out.println(student.studentId + " " + student.name + " " + student.group);
                 }
             } else if (command.equals("end")){
                 break;
