@@ -36,7 +36,7 @@ public class FinancialCalculatorException {
                     throw new InputException("Введено не число");
                 }
             } catch (InputException exception) {
-                // сгенерируйте вывод формата "Ошибка ввода: " + информация об исключении
+                // сгенерируйте вывод формата "Ошибка ввода: "+ информация об исключении
                 System.out.println("Ошибка ввода: " + exception.getMessage());
             }
         }
