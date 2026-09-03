@@ -1,4 +1,4 @@
-package work_with_files.task3;
+package work_with_files.extra_task.task2;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

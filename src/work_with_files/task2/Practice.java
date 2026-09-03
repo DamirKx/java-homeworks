@@ -1,29 +1,72 @@
 package work_with_files.task2;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
 public class Practice {
-    public static void main(String[] args) throws IOException {
-        Map<String, Integer> frequencyMap = new HashMap<>();
-        FileReader reader = new FileReader("src\\work_with_files\\task2\\result.txt");
-        BufferedReader br = new BufferedReader(reader);
-        // читайте файл построчно и сразу обновляйте frequencyMap.
-        while (br.ready()) {
-            String line = br.readLine();
-            if (frequencyMap.containsKey(line)){
-                frequencyMap.put(line, frequencyMap.get(line) + 1);
-            } else {
-                frequencyMap.put(line, 1);
-            }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите количество участников: ");
+        int playersNumber = scanner.nextInt();
+
+        List<String> words = readWordsFromFile("words.txt");
+
+        if (playersNumber <= 0) {
+            System.out.println("Количество участников должно быть больше нуля.");
+            return;
         }
-        // выведите результат в формате "<буква>: <количество>".
-        br.close();
-        for (String key : frequencyMap.keySet()){
-            System.out.format("%s: %s\n", key, frequencyMap.get(key));
+
+        // Если слов меньше, чем участников, то выведите сообщение:
+        if (words.size() < playersNumber){
+            System.out.println("Недостаточно слов в файле. Добавьте слова и обновите файл.");
+            return;
         }
+        // "Недостаточно слов в файле. Добавьте слова и обновите файл."
+        // и завершите выполнение программы
+
+        // воспользуйтесь статическим методом Collections.shuffle(List<?> list),
+        // чтобы поменять порядок слов случайным образом
+        Collections.shuffle(words);
+
+        int wordsNumber = words.size() / playersNumber;
+
+        for (int i = 0; i < playersNumber; i++) {
+            String filename = String.format("player%s.txt", i + 1);
+            List<String> subList = words.subList(i * wordsNumber, (i + 1) * wordsNumber);
+
+            writeListToFile(subList, filename);
+        }
+
+        System.out.println("Карточки готовы!");
     }
 
+    private static List<String> readWordsFromFile(String filename) {
+        // добавьте построчное чтение из файла с помощью BufferedReader
+        // в случае ошибки выведите сообщение: "Произошла ошибка во время чтения файла."
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename));){
+            return new ArrayList<>(reader.lines().toList());
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл не найден");
+        } catch (IOException e) {
+            System.out.println("Произошла ошибка во время чтения файла.");
+        }
+        return Collections.emptyList();
+    }
+
+    private static void writeListToFile(List<String> list, String filename)  {
+        // добавьте запись слов в файл с помощью FileWriter
+        try (FileWriter fileWriter = new FileWriter(filename)){
+            for (String word : list) {
+                fileWriter.write(word + "\n");
+            }
+        } catch (IOException e){
+            System.out.println("Произошла ошибка во время чтения файла.");
+        }
+    }
 }
