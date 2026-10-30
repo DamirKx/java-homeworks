@@ -1,4 +1,4 @@
-package httpAndApi;
+package httpAndApi.task1;
 
 import com.sun.net.httpserver.HttpServer;
 
