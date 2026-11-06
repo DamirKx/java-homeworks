@@ -87,6 +87,7 @@ public class PostsHandler implements HttpHandler {
 
         if (postIdOpt.isEmpty()){
             writeResponse(exchange, "Некорректный идентификатор поста", 400);
+            return;
         } else {
             for (Post post : posts){
                 if (Objects.equals(post.getId(),postIdOpt.get())){
